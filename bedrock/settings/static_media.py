@@ -419,6 +419,15 @@ PIPELINE_CSS = {
         ),
         'output_filename': 'css/firefox_hello-bundle.css',
     },
+    'firefox_ios': {
+        'source_filenames': (
+            'css/firefox/family-nav.less',
+            'css/base/mozilla-modal.less',
+            'css/base/send-to-device.less',
+            'css/firefox/ios.less',
+        ),
+        'output_filename': 'css/firefox_ios-bundle.css',
+    },
     'firefox_new': {
         'source_filenames': (
             'css/sandstone/sandstone-resp.less',
@@ -1012,7 +1021,6 @@ PIPELINE_JS = {
             'js/base/mozilla-accordion.js',
             'js/libs/jquery.waypoints.min.js',
             'js/libs/jquery.cycle2.min.js',
-            'js/libs/jquery.waypoints.min.js',
             'js/libs/jquery.waypoints-sticky.min.js',
             'js/firefox/family-nav.js',
             'js/firefox/sync-animation.js',
@@ -1188,7 +1196,7 @@ PIPELINE_JS = {
         ),
         'output_filename': 'js/firefox_independent-bundle.js',
     },
-    'firefox_pocket': {
+    'firefox_os': {
         'source_filenames': (
             'js/firefox/australis/australis-uitour.js',
             'js/firefox/pocket.js',
@@ -1323,6 +1331,18 @@ PIPELINE_JS = {
             'js/libs/matchMedia.addListener.js',
         ),
         'output_filename': 'js/firefox_hello_ie9-bundle.js',
+    },
+    'firefox_ios': {
+        'source_filenames': (
+            'js/libs/jquery.waypoints.min.js',
+            'js/libs/jquery.waypoints-sticky.min.js',
+            'js/firefox/family-nav.js',
+            'js/base/mozilla-modal.js',
+            'js/base/send-to-device.js',
+            'js/firefox/australis/australis-uitour.js',
+            'js/firefox/ios.js',
+        ),
+        'output_filename': 'js/firefox_ios-bundle.js',
     },
     'firefox_tour': {
         'source_filenames': (

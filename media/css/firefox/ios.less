@@ -1,0 +1,236 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+@import "../sandstone/lib.less";
+
+// potential general styles for new mozilla id themed pages
+@mozIDBlue: #0c99d5;
+
+.mozid {
+    color: #fff;
+
+    #outer-wrapper {
+        background: @mozIDBlue url(/media/img/firefox/family/index/aurora.png) right top no-repeat;
+
+        @media only screen and (max-width: @breakTablet) {
+            background-position: -200px -100px;
+        }
+    }
+
+    #wrapper {
+        width: 100%;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6, .huge, .large {
+        color: #fff;
+        text-shadow: none;
+    }
+}
+
+.content {
+    .border-box();
+    width: @widthDesktop;
+    margin: 0 auto;
+
+    @media only screen and (min-width: @breakDesktopWide) {
+        width: @widthDesktopWide;
+    }
+
+    @media only screen and (max-width: @breakDesktop) {
+        width: @widthTablet;
+    }
+
+    @media only screen and (max-width: @breakTablet) {
+        width: @widthMobile;
+    }
+
+    @media only screen and (min-width: @breakMobileLandscape) and (max-width: @breakTablet) {
+        width: @widthMobileLandscape;
+    }
+}
+
+.section-intro {
+    .content {
+        padding: 80px ((@gridColumnWidth * 6) + (@gridGutterWidth * 6)) 80px 0;
+        min-height: 550px;
+        background: url(/media/img/firefox/ios/firefox-iphone-white.png) 550px bottom no-repeat;
+        .at2x('/media/img/firefox/ios/firefox-iphone-white.png', 386px, 546px);
+
+        @media only screen and (min-width: @breakDesktopWide) {
+            padding: 80px ((@gridColumnWidth * 9) + (@gridGutterWidth * 9)) 80px ((@gridColumnWidth * 2) + (@gridGutterWidth * 2));
+            background-position: 715px bottom;
+        }
+    }
+
+    .beta-flag {
+        background: #f26c24;
+        padding: .5em 20px;
+        color: #fff;
+        .font-size(12px);
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    h1 {
+        .font-size(82px);
+    }
+
+    h2 {
+        .font-size(40px);
+        color: #bee1f5;
+        line-height: 1.2;
+        margin: 0 0 1em;
+    }
+
+    .cta .button-flat {
+        .font-size(28px);
+        text-transform: none;
+        padding: .5em 60px;
+        background-color: #6fbe4a;
+
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: lighten(#6fbe4a, 5%);
+        }
+    }
+
+    .appstore-badge img {
+        width: 200px;
+        height: auto;
+    }
+
+    .newsletter-form {
+        background: transparent;
+        padding: 0;
+        border: 0;
+        box-shadow: none;
+
+        .form-contents,
+        .form-submit {
+            width: auto;
+            float: none;
+            margin: 0;
+        }
+
+        h3 {
+            width: auto;
+            float: none;
+            .font-size(40px);
+            color: #bee1f5;
+            line-height: 1.2;
+            margin: 0 0 1em;
+        }
+    }
+
+}
+
+
+.section-sync {
+    padding: 60px 0;
+    background: #fff;
+    color: @textColorPrimary;
+    text-align: center;
+
+    h2 {
+        color: @textColorSecondary;
+        .font-size(48px);
+        line-height: 1.3;
+        padding: 135px ((@gridColumnWidth * 3) + (@gridGutterWidth * 2)) 0;
+        position: relative;
+
+        &:before {
+            content: '';
+            display: block;
+            width: 148px;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            margin-left: -74px;
+            background: url(/media/img/firefox/ios/sync-icon-sprite.png) -142px -284px no-repeat;
+            .at2x('/media/img/firefox/ios/sync-icon-sprite.png', 292px, 426px);
+        }
+    }
+
+    h3 {
+        color: @textColorSecondary;
+        .font-size(32px);
+    }
+}
+
+.sync-features {
+    list-style: none;
+    text-align: center;
+    display: flex;
+    width: (@gridColumnWidth * 8) + (@gridGutterWidth * 7);
+    margin: 20px auto 40px;
+
+    li {
+        .span(3);
+        .font-size(22px);
+        position: relative;
+        padding-top: 160px;
+
+        &:before {
+            content: '';
+            display: block;
+            width: 142px;
+            height: 142px;
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            margin-left: -71px;
+            background: url(/media/img/firefox/ios/sync-icon-sprite.png) no-repeat;
+            .at2x('/media/img/firefox/ios/sync-icon-sprite.png', 292px, 426px);
+        }
+
+        &.sync-history:before {
+            background-position: 0 0;
+        }
+
+        &.sync-passwords:before {
+            background-position: 0 -142px;
+        }
+
+        &.sync-tabs:before {
+            background-position: -142px 0;
+        }
+    }
+}
+
+#colophon {
+    background-color: @mozIDBlue;
+    color: #fff;
+
+    a:link,
+    a:visited {
+        color: #bee1f5;
+    }
+
+    a:hover,
+    a:focus,
+    a:active {
+        color: #fff;
+    }
+
+    .logo a {
+        background-image: url(/media/img/sandstone/footer-mozilla-white.png);
+        .at2x('/media/img/sandstone/footer-mozilla-white.png', 93px, 24px);
+    }
+
+    @media only screen and (min-width: @breakDesktopWide) {
+        .row {
+            width: @widthDesktopWide;
+        }
+
+        .col {
+            .span(5);
+        }
+    }
+
+}
