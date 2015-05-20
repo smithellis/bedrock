@@ -883,7 +883,6 @@ class TestProcessContentServicesForm(TestCase):
 
             # decode JSON response
             resp_data = json.loads(response.content)
-            print resp_data['errors']
 
             self.assertEqual(resp_data['msg'], 'ok')
             self.assertEqual(response.status_code, 200)
@@ -906,6 +905,50 @@ class TestProcessContentServicesForm(TestCase):
             self.assertTrue('email' in resp_data['errors'])
             self.assertEqual(response._headers['content-type'][1],
                              'application/json')
+
+    def test_post_ajax_no_state(self):
+        """
+        State field required if country is 'us'.
+        """
+
+        with self.activate('en-US'):
+            # test AJAX POST with non-us country
+            self.post_data['state'] = ''
+            self.post_data['country'] = 'de'
+            request = self.factory.post(self.url, self.post_data,
+                                        HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+
+            response = views.process_content_services_form(request, self.template,
+                                                           self.view)
+
+            # decode JSON response
+            resp_data = json.loads(response.content)
+
+            self.assertEqual(resp_data['msg'], 'ok')
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(response._headers['content-type'][1],
+                             'application/json')
+            ok_(self.requests_mock.called)
+            self.requests_mock.reset_mock()
+
+            # test AJAX POST with us country and no state
+            self.post_data['state'] = ''
+            self.post_data['country'] = 'us'
+            request = self.factory.post(self.url, self.post_data,
+                                        HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+
+            response = views.process_content_services_form(request, self.template,
+                                                           self.view)
+
+            # decode JSON response
+            resp_data = json.loads(response.content)
+
+            self.assertEqual(resp_data['msg'], 'Form invalid')
+            self.assertEqual(response.status_code, 400)
+            self.assertTrue('state' in resp_data['errors']['__all__'][0])
+            self.assertEqual(response._headers['content-type'][1],
+                             'application/json')
+            ok_(not self.requests_mock.called)
 
     def test_post_ajax_honeypot(self):
         """
