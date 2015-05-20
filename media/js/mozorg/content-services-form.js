@@ -16,8 +16,6 @@
     var $stateField = $('.state-field');
     var $stateFlydown = $('#state');
     var $provinceField = $('.province-field');
-    var $stateInput = $stateField.find('input, textarea, select');
-    var $provinceInput = $provinceField.find('input, textarea, select');
 
     var $contentFormError = $('#content-form-error');
     var $mainContent = $('#main-content');
@@ -53,7 +51,7 @@
 
     var country_is_us = function() {
         return $country.val().indexOf('us') > -1;
-    }
+    };
 
     var toggleStateFields = function(activate) {
         if (activate) {
@@ -102,7 +100,7 @@
                 type: $sfForm.attr('method'),
                 dataType: 'json',
                 success: function(data, status, xhr) {
-                    $('#sf-form').fadeOut('fast', function() {
+                    $sfForm.fadeOut('fast', function() {
                         $('#content-form-success').css('visibility', 'visible').fadeIn('fast', function() {
                             scrollup();
                         });
