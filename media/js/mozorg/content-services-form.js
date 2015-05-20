@@ -14,6 +14,7 @@
 
     var $country = $('#country');
     var $stateField = $('.state-field');
+    var $stateFlydown = $('#state');
     var $provinceField = $('.province-field');
     var $stateInput = $stateField.find('input, textarea, select');
     var $provinceInput = $provinceField.find('input, textarea, select');
@@ -64,8 +65,18 @@
         }
     };
 
+    // If country is not US, do not require State field
+    var toggleRequiredState = function(activate) {
+        if (activate) {
+            $stateFlydown.prop('required', true);
+        } else {
+            $stateFlydown.removeAttr('required');
+        }
+    };
+
     $country.on('change', function() {
         toggleStateFields(country_is_us());
+        toggleRequiredState(country_is_us());
     });
 
     $sfFormSubmit.on('click', function(e) {
