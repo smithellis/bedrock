@@ -627,6 +627,9 @@ class ContentServicesForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 'size': 20,
+                'class': 'required',
+                'required': 'required',
+                'aria-required': 'true'
             }
         )
     )
