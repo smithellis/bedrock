@@ -1,0 +1,272 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+@import "../sandstone/lib.less";
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font: -moz-document;
+    font-size: 100%;
+}
+
+#outer-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+#wrapper {
+    width: 100%;
+}
+
+.container {
+    position: relative;
+    width: 1000px;
+    margin: 0 auto;
+    padding: @baseLine @gridGutterWidth;
+
+    .primary-col {
+        float: left;
+        width: 640px;
+        margin-right: @gridGutterWidth;
+    }
+
+    .secondary-col {
+        float: right;
+        width: 340px;
+
+        aside,
+        .ad {
+            height: 200px;
+        }
+    }
+
+    .ad {
+        position: relative;
+        height: 100px;
+        margin-bottom: @baseLine;
+        background-color: #E3F1DD;
+        border: 2px dashed #70be4a;
+        background-image: linear-gradient(45deg, #D7EBCE 25%, transparent 25%, transparent 75%, #D7EBCE 75%, #D7EBCE),
+                          linear-gradient(45deg, #D7EBCE 25%, transparent 25%, transparent 75%, #D7EBCE 75%, #D7EBCE);
+        background-size: 40px 40px;
+        background-position: 0 0, 20px 20px;
+
+        &:after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url(/media/img/firefox/tracking-protection/shield.svg);
+            background-repeat: no-repeat;
+            background-position: center center;
+            .background-size(48px, 48px);
+            content: '';
+        }
+
+        &.fade-out {
+            animation: fade-out 1s ease-in 0s 1 normal forwards;
+        }
+    }
+
+    article,
+    aside {
+        background-color: #f1f1f1;
+        background-image: repeating-linear-gradient(180deg, transparent, transparent 5px, #e5e5e5 5px, #e5e5e5 10px);
+        border: 2px solid #c4cbce;
+        margin-bottom: @gridGutterWidth;
+    }
+
+    article {
+        height: 880px;
+    }
+}
+
+.visually-hidden {
+    .visually-hidden();
+}
+
+.hidden {
+    .hidden();
+}
+
+main > header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0 @gridGutterWidth;
+    color: #fff;
+    background: #6FBE49;
+    z-index: 10;
+    .clearfix();
+
+    h1 {
+        float: left;
+        color: #fff;
+        text-shadow: none;
+        font-style: italic;
+        font-weight: 200;
+        .font-size(28px);
+        line-height: 1.2;
+        margin: @baseLine 0;
+        padding: @baseLine 0 0 100px;
+        min-height: 44px;
+        background: url(/media/img/firefox/tracking-protection/mask-shield.svg) center left no-repeat;
+        .background-size(90px, 44px);
+    }
+
+    p {
+        float: right;
+        margin: (@baseLine * 2) 0 0 @baseLine;
+        .font-size(@largeFontSize);
+        line-height: 1.2;
+    }
+
+    a:link,
+    a:visited {
+        color: #fff;
+        text-decoration: underline;
+    }
+}
+
+.ad-container {
+    position: relative;
+}
+
+#info-panel {
+    position: absolute;
+    top: 0;
+    left: -310px;
+    background: #fafafa;
+    border-radius: 3px;
+    border: 1px solid #aaa;
+    filter: drop-shadow(0 5px 7px rgba(68, 68, 68, 0.7));
+    box-sizing: border-box;
+    cursor: default;
+    width: 300px;
+    z-index: 100;
+    -moz-user-select: none;
+    transform-origin: top right;
+    animation: scale-up .2s ease-in 0s 1 normal forwards;
+
+    header {
+        padding: 15px;
+    }
+
+    h2 {
+        .font-size(@largeFontSize);
+    }
+
+    p {
+        .font-size(@baseFontSize);
+        line-height: 1.6;
+    }
+
+    footer {
+        .font-size(13px);
+        border-top: 1px solid #cbcccc;
+        background-color: #f0f0f0;
+        color: rgb(179,177,179);
+        padding: @baseLine 30px;
+        text-align: right;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 0;
+        margin: 0;
+        font-size: 0;
+        width: 12px;
+        height: 12px;
+        line-height: 12px;
+        background: transparent;
+        border: none;
+        color: #c0c0c0;
+        text-align: center;
+        border-radius: 2px;
+        -moz-appearence: none;
+
+        &:after {
+            position: absolute;
+            top: -2px;
+            left: 0;
+            width: 12px;
+            height: 12px;
+            .font-size(@largeFontSize);
+            font-weight: bold;
+            content: '×';
+        }
+
+        &:hover,
+        &:focus {
+            background: #c0c0c0;
+            color: #fff;
+        }
+    }
+
+    footer > button {
+        .font-size(13px);
+        background-color: #6cc042;
+        border-radius: 5px;
+        border: 1px solid #c0c0c0;
+        color: #fff;
+        padding: 5px 2.5em;
+        margin-left: 30px;
+        transition: background-color .1s ease-in-out;
+
+        &:hover,
+        &:focus {
+            background-color: #6bac44;
+        }
+    }
+
+    &:before,
+    &:after {
+        position: absolute;
+        width: 0;
+        height: 0;
+    }
+
+    &:before {
+        content: '';
+        top: 20px;
+        right: -20px;
+        border: 10px solid transparent;
+	    border-left-color: #fafafa;
+        z-index: 2;
+    }
+
+    &:after {
+        content: '';
+        top: 19px;
+        right: -22px;
+        border: 11px solid transparent;
+        border-left-color: #aaa;
+        z-index: 1;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes scale-up {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

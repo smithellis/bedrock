@@ -657,3 +657,6 @@ class FeedbackView(TemplateView):
             template = 'firefox/feedback/unhappy.html'
 
         return [template]
+
+class TrackingProtectionTourView(TemplateView):
+    template_name = 'firefox/tracking-protection-tour.html'
