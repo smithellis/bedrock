@@ -56,8 +56,14 @@ if (typeof Mozilla === 'undefined') {
             },
         ];
 
+        //controlCenter-trackingBlock
+
         Mozilla.UITour.showMenu('controlCenter', function() {
-            Mozilla.UITour.showInfo('controlCenter-trackingUnblock', _step3.titleText, _step3.panelText, undefined, buttons);
+            Mozilla.UITour.getConfiguration('availableTargets', function(config) {
+                if (config.targets.indexOf('controlCenter-trackingUnblock') !== -1) {
+                    Mozilla.UITour.showInfo('controlCenter-trackingUnblock', _step3.titleText, _step3.panelText, undefined, buttons);
+                }
+            });
         });
     };
 
