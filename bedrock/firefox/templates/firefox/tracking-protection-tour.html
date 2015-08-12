@@ -21,7 +21,7 @@
 
 {% block string_data %}
 data-panel1-title="{{ _('How Tracking Protection works') }}"
-data-panel1-text="{{ _('When the shield is visible, that means Firefox is actively blocking content that tracks you.') }}"
+data-panel1-text="{{ _('When the shield is visible, it means Firefox is actively blocking page elements that may track you.') }}"
 data-panel1-step="{{ _('1 of 3') }}"
 data-panel1-button="{{ _('Next') }}"
 
@@ -71,7 +71,7 @@ data-panel3-button="{{ _('Got it!') }}"
         <section id="info-panel" class="hidden">
           <header>
             <h2>{{ _('Differences to expect') }}</h2>
-            <p>{{ _('Some content areas may be missing because they collect and share information about you.') }}</p>
+            <p>{{ _('Some page areas may be missing because they can allow third-parties to track your browsing behavior.') }}</p>
             <button class="close-btn" type="button">{{ _('Close') }}</button>
           </header>
           <footer>{{ _('2 of 3') }} <button type="button">{{ _('Next') }}</button></footer>
